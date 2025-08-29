@@ -34,8 +34,6 @@ The project is built to demonstrate how Flask can be used for creating a modern,
 ### Bulk Import Page  
 ![Import Screenshot](https://github.com/singhraj00/flask-tutorial/blob/dev/app/static/pictures/bulk-import-services.png)
 
-*(Add your own screenshots in a `screenshots/` folder in the repo)*  
-
 ---
 
 ## 🚀 Getting Started  
