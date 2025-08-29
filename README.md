@@ -26,13 +26,13 @@ The project is built to demonstrate how Flask can be used for creating a modern,
 ## 📸 Screenshots  
 
 ### Home Page  
-![Home Screenshot](screenshots/home.png)  
+![Home Screenshot](https://github.com/singhraj00/flask-tutorial/blob/dev/app/static/pictures/home.png)
 
 ### Services Page  
-![Services Screenshot](screenshots/services.png)  
+![Services Screenshot](https://github.com/singhraj00/flask-tutorial/blob/dev/app/static/pictures/Services.png)  
 
 ### Bulk Import Page  
-![Import Screenshot](screenshots/import.png)  
+![Import Screenshot](https://github.com/singhraj00/flask-tutorial/blob/dev/app/static/pictures/bulk-import-services.png)
 
 *(Add your own screenshots in a `screenshots/` folder in the repo)*  
 
