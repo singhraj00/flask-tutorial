@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">Update Service</h2>
+  
+  <form method="POST" enctype="multipart/form-data" class="p-4 shadow bg-light rounded">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" value="{{ service.title }}" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea name="description" class="form-control" rows="3" required>{{ service.description }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Current Image</label><br>
+      <img src="{{ url_for('static', filename='uploads/' ~ service.image_url) }}" 
+           alt="{{ service.title }}" class="img-fluid mb-2" style="max-width:200px;">
+      <input type="file" name="image" class="form-control mt-2" accept="image/*">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Link</label>
+      <input type="url" name="link" class="form-control" value="{{ service.link }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Update Service</button>
+    <a href="{{ url_for('services.services') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

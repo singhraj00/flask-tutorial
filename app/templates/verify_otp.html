@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+    <h3 class="text-center mb-4">Verify OTP</h3>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <div class="mb-3">
+        <label class="form-label">Enter OTP</label>
+        <input type="text" name="otp" class="form-control" placeholder="Enter 6-digit OTP" required>
+        <input type="hidden" name="email" value="{{email}}">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

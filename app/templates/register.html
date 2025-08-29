@@ -1,0 +1,60 @@
+{% extends  "base.html" %}
+{% block content %}
+  <style>
+    body {
+      background: linear-gradient(to right, #283048, #859398);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .register-card {
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .register-card h3 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-card">
+    <h3 class="text-center">Create Account</h3>
+    <!-- Flash messages here -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method='post'>
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="name" class="form-control" placeholder="Enter your name">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email address</label>
+        <input type="email" name="email" class="form-control" placeholder="Enter your email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Create a password">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Re-enter your password">
+      </div>
+      <button type="submit" class="btn btn-success w-100">Register</button>
+      <p class="text-center mt-3">
+        Already have an account? <a href="/login">Login</a>
+      </p>
+    </form>
+  </div>
+{% endblock %}

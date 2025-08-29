@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">   <!-- 👈 Fixed compact width -->
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+          <h3 class="mb-4 text-center fw-bold text-primary">✨ Add New Service</h3>
+
+      
+
+          <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Service Title</label>
+              <input type="text" name="title" class="form-control rounded-3" placeholder="Enter service title" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Description</label>
+              <textarea name="description" class="form-control rounded-3" rows="3" placeholder="Write a short description..." required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Upload Image</label>
+              <input type="file" name="image" class="form-control rounded-3" accept="image/*" required>
+              <small class="text-muted">Supported formats: JPG, PNG, JPEG</small>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Service Link</label>
+              <input type="url" name="link" class="form-control rounded-3" placeholder="https://example.com" required>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary rounded-3 shadow-sm">
+                🚀 Add Service
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    background: #ffffff;
+    max-width: 100%;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, #0d6efd, #0b5ed7);
+    border: none;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #0b5ed7, #084298);
+  }
+</style>
+{% endblock %}

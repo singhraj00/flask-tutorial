@@ -1,0 +1,58 @@
+{% extends  "base.html" %}
+{% block content %}
+  <style>
+    body {
+      background: linear-gradient(to right, #283048, #859398);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .login-card {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .login-card h3 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+
+<body>
+  <div class="login-card">
+    <h3 class="text-center">Login</h3>
+
+      <!-- Flash messages here -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method='post'>
+      <div class="mb-3">
+        <label class="form-label">Email address</label>
+        <input type="email" name="email" class="form-control" placeholder="Enter your email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Enter your password">
+      <!-- Forgot password link -->
+      <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+      <p class="text-center mt-3">
+        Don’t have an account? <a href="/register">Register</a>
+
+      </p>
+     
+
+    </form>
+  </div>
+{% endblock %}
