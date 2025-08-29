@@ -3,23 +3,31 @@
 {% block content %}
 <section class="py-5 bg-light">
   <div class="container">
-<!-- Header -->
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <div>
-    <h2 class="fw-bold">Our Services</h2>
-    <p class="text-muted">We provide modern solutions to help your business grow</p>
-  </div>
-
-    <!-- Buttons Group -->
+<!-- Header Section -->
+<!-- Header Section -->
+<div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+    
+    <!-- Left: Title and Subtitle -->
+    <div class="mb-3 mb-md-0">
+      <h2 class="fw-bold text-dark mb-1">
+        <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i> Our Services
+      </h2>
+      <p class="text-muted mb-0">We provide modern solutions to help your business grow</p>
+    </div>
+    
+    <!-- Right: Buttons -->
     <div class="d-flex gap-2">
-      <a href="{{ url_for('services.add_service') }}" class="btn btn-primary shadow-sm d-flex align-items-center">
+      <a href="{{ url_for('services.add_service') }}" class="btn btn-primary d-flex align-items-center">
         <i class="bi bi-plus-circle me-2"></i> Add Service
       </a>
-      <a href="{{ url_for('services.import_services') }}" class="btn btn-success shadow-sm d-flex align-items-center">
+      <a href="{{ url_for('services.import_services') }}" class="btn btn-outline-success d-flex align-items-center">
         <i class="bi bi-file-earmark-arrow-up me-2"></i> Import Services
       </a>
     </div>
+
   </div>
+</div>
 
 
     <!-- Services Grid -->
