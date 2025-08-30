@@ -3,12 +3,14 @@ from .. import db
 from ..models import Services
 from werkzeug.utils import secure_filename
 import os 
+from flask_login import login_required
 from flask import current_app
 import pandas as pd 
 
 services_bp = Blueprint('services', __name__)
 
 @services_bp.route('/services')
+@login_required
 def services():
     all_services = Services.query.order_by(Services.created_at.desc()).all()
     return render_template('services/list_services.html', services=all_services)
