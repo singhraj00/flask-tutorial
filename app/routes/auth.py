@@ -57,23 +57,47 @@ def forgot_password():
         user = User.query.filter_by(email=email).first()
         if user:
             last_otp = OTP.query.filter_by(email=email).order_by(OTP.created_at.desc()).first()
+
+            # Check agar pichhla OTP valid hai (10 min ke andar)
             if last_otp and datetime.utcnow() < last_otp.created_at + timedelta(minutes=10):
                 remaining = int((last_otp.created_at + timedelta(minutes=10) - datetime.utcnow()).total_seconds() // 60)
-                flash(f'OTP already sent. Wait {remaining} minutes.', 'warning')
-                return redirect('/forgot-password')
 
+                # Purana OTP hi resend karo
+                reset_url = f"http://127.0.0.1:5000/verify-otp?email={email}"
+                msg = Message(
+                    subject="🔐 Password Reset Request",
+                    recipients=[email],
+                    sender="yourname@gmail.com"
+                )
+                msg.html = render_template("email/otp_email.html", otp_code=last_otp.otp_code, url=reset_url)
+                mail.send(msg)
+
+                flash(f'OTP already sent earlier. We have resent it again. Valid for {remaining} more minutes.', 'info')
+                return redirect(f'/verify-otp?email={email}')
+
+            # Agar OTP nahi hai ya expire ho gaya hai → naya generate karo
             otp_code = str(random.randint(100000, 999999))
             new_otp = OTP(email=email, otp_code=otp_code)
             db.session.add(new_otp)
             db.session.commit()
-            msg = Message('Your OTP Code', recipients=[email])
-            msg.body = f'Your OTP is {otp_code}. Valid for 10 minutes.'
+
+            reset_url = f"http://127.0.0.1:5000/verify-otp?email={email}"
+            msg = Message(
+                subject="🔐 Password Reset Request",
+                recipients=[email],
+                sender="yourname@gmail.com"
+            )
+            msg.html = render_template("email/otp_email.html", otp_code=otp_code, url=reset_url)
             mail.send(msg)
-            flash('OTP sent to email', 'info')
+
+            flash('OTP sent to your email. Valid for 10 minutes.', 'info')
             return redirect(f'/verify-otp?email={email}')
+        
         flash('Email not found', 'danger')
         return redirect('/forgot-password')
+    
     return render_template('forgot_password.html')
+
 
 @auth_bp.route('/verify-otp', methods=['GET', 'POST'])
 def verify_otp():

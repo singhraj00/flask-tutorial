@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333333;
+    }
+    .otp {
+      font-size: 28px;
+      font-weight: bold;
+      color: #007BFF;
+      margin: 20px 0;
+      letter-spacing: 5px;
+    }
+    .btn {
+      display: inline-block;
+      background: #007BFF;
+      color: #fff !important;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .footer {
+      font-size: 12px;
+      color: #666;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Password Reset Request</h2>
+    <p>Hello,</p>
+    <p>You requested to reset your password. Use the OTP code below to continue:</p>
+
+    <div class="otp">{{ otp_code }}</div>
+
+    <p>Or click the button below to verify directly:</p>
+    <a href="{{ url }}" class="btn">Verify OTP</a>
+
+    <p class="footer">
+      This OTP is valid for <b>10 minutes</b>. If you did not request this, you can ignore this email.
+    </p>
+  </div>
+</body>
+</html>
