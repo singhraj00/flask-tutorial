@@ -20,3 +20,7 @@ Thumbs.db
 # Logs
 *.log
 *.env
+
+## sample files
+generate_sample.py
+course_sample.xlsx
