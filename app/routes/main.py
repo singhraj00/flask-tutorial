@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect
 from ..models import ContactUs
+from .. import db
 from flask_login import login_required
 
 main_bp = Blueprint('main', __name__)
